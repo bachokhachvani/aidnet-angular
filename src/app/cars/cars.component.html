@@ -1,0 +1,16 @@
+<div *ngFor="let row of carsData" class="card" style="width: 30rem">
+  <img src="{{ row.image }}" class="card-img-top" alt="..." />
+  <div class="card-body">
+    <h5 class="card-title">{{ row.model }}</h5>
+    <p class="card-text">აღწერა: {{ row.desc }}</p>
+    <ul class="list-group">
+      <li class="list-group-item active" aria-current="true">მახასიათებლები</li>
+      <li class="list-group-item">
+        {{ row.feature }}
+      </li>
+    </ul>
+    <hr />
+    <a class="btn btn-primary" (click)="onSelect(row)">რედაქტირება</a>
+    <a class="btn btn-secondary" (click)="deleteCar(row)">წაშლა</a>
+  </div>
+</div>

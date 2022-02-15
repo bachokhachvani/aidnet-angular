@@ -1,0 +1,55 @@
+<form [formGroup]="formValue">
+  <select
+    class="form-select"
+    aria-label="Default select example"
+    [(ngModel)]="carsId"
+    [ngModelOptions]="{ standalone: true }"
+    (change)="getCarName()"
+  >
+    <option [value]="car.id" *ngFor="let car of cars">
+      {{ car.name }}
+    </option>
+  </select>
+  <p>{{ carsId }}</p>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >ავტომობილის აღწერა</label
+    >
+    <input
+      type="text"
+      formControlName="desc"
+      class="form-control"
+      placeholder="{{ carsData.desc }}"
+    />
+  </div>
+  <div class="mb-3">
+    <label for="exampleInputEmail1" class="form-label"
+      >ავტომობილის სურათის ლინკი</label
+    >
+    <input
+      type="text"
+      formControlName="image"
+      class="form-control"
+      placeholder="{{ carsData.image }}"
+    />
+  </div>
+  <div class="mb-3 form-check" *ngFor="let feature of features">
+    <input
+      [value]="feature.id"
+      type="checkbox"
+      class="form-check-input"
+      id="exampleCheck1"
+      (change)="getFeatureId($event, feature.name)"
+    />
+    <label class="form-check-label" for="exampleCheck1">{{
+      feature.name
+    }}</label>
+  </div>
+
+  <button type="submit" class="btn btn-primary" (click)="updateForm()">
+    განახლება
+  </button>
+  <button type="submit" routerLink="/cars" class="btn btn-secondary">
+    უკან დაბრუნება
+  </button>
+</form>
